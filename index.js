@@ -14,7 +14,9 @@
  * @param {Item[]} items - array of items
  */
 function logNames(items) {
-  // TODO: use `forEach`
+  items.forEach((item) => {
+    console.log(item.name);
+  });
 }
 
 /**
@@ -22,7 +24,8 @@ function logNames(items) {
  * @returns {string[]} an array of item names in all uppercase
  */
 function getUppercaseNames(items) {
-  // TODO: use `map`
+  const uppercaseNames = items.map((element) => element.name.toUpperCase());
+  return uppercaseNames;
 }
 
 /**
@@ -31,7 +34,8 @@ function getUppercaseNames(items) {
  * @returns {Item} - the item in `items` with the given `id`
  */
 function getItemById(items, id) {
-  // TODO: use `find`
+  const itemID = items.find((items) => items.id == id);
+  return itemID.name;
 }
 
 /**
@@ -40,16 +44,22 @@ function getItemById(items, id) {
  * @returns {number} the price of the item named `name`
  */
 function getItemPriceByName(items, name) {
-  // TODO: use a loop!
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].name == name) {
+      return items[i].price;
+    }
+    console.log(getItemPriceByName);
+  }
 }
-
 /**
  * @param {Item[]} items - array of items
  * @param {string} category
  * @returns {Item[]} array of items that belong to the given `category`
  */
 function getItemsByCategory(items, category) {
-  // TODO: use `filter`
+  const result = items.filter((item) => item.category === category);
+  const byCategory = result.map((element) => element.name.toString());
+  return byCategory;
 }
 
 /**
@@ -58,6 +68,10 @@ function getItemsByCategory(items, category) {
  */
 function countItems(items) {
   // TODO: use `reduce`
+  const total = items.reduce((accumulator, item) => {
+    return accumulator + item.quantity;
+  }, 0);
+  return total;
 }
 
 /**
@@ -65,7 +79,11 @@ function countItems(items) {
  * @returns {number} the cost of all given items
  */
 function calculateTotalPrice(items) {
-  // TODO: use `reduce`
+  // Use `reduce` to sum up the prices
+  const total = items.reduce((accumulator, item) => {
+    return accumulator + item.price * item.quantity;
+  }, 0);
+  return total;
 }
 
 // --------------------- DO NOT CHANGE THE CODE BELOW ------------------------ //
